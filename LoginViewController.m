@@ -1,0 +1,85 @@
+//
+//  LoginViewController.m
+//  Ring of Fire
+//
+//  Created by Sam Stone on 13/12/2014.
+//  Copyright (c) 2014 Olivier Gutknecht. All rights reserved.
+//
+
+#import "LoginViewController.h"
+#import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <FacebookSDK/FacebookSDK.h>
+
+@interface LoginViewController ()
+
+@end
+
+@implementation LoginViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+}
+- (IBAction)close:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+- (IBAction)loginButtonTouchHandler:(id)sender  {
+    [PFFacebookUtils initializeFacebook];
+    // Set permissions required from the facebook user account
+    NSArray *permissionsArray = @[ @"user_about_me"];
+    
+    // Login PFUser using Facebook
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        [_activityIndicator stopAnimating]; // Hide loading indicator
+        
+        if (!user) {
+            NSString *errorMessage = nil;
+            if (!error) {
+                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+                errorMessage = @"Uh oh. The user cancelled the Facebook login.";
+            } else {
+                NSLog(@"Uh oh. An error occurred: %@", error);
+                errorMessage = [error localizedDescription];
+            }
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                            message:errorMessage
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        } else {
+            if (user.isNew) {
+                NSLog(@"User with facebook signed up and logged in!");
+            } else {
+                NSLog(@"User with facebook logged in!");
+            }
+            NSLog(@"%@", user.username);
+            [self _presentUserDetailsViewControllerAnimated:YES];
+        }
+    }];
+    
+    [_activityIndicator startAnimating];
+}
+
+- (void)_presentUserDetailsViewControllerAnimated:(BOOL)animated {
+[self performSegueWithIdentifier:@"loggedIn" sender:self];
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

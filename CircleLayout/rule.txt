@@ -1,0 +1,15 @@
+{
+  "rule-two": "You. Nominate someone to drink two fingers.",
+  "rule-three": "Me. Drinks two fingers.",
+  "rule-four": "Girls. All girls have to drink.",
+  "rule-five": "Thumb master. When you put your thumb on the table everyone must follow and whomever is last must drink. You are the thumb master until someone else picks another 5",
+  "rule-six": "Guys. All guys drink.",
+  "rule-seven": "Heaven. When you put your hand in the air, everyone must follow. The last one to do so must drink. This continues until another seven is picked.",
+  "rule-eight": "Mate. Chose someone who drinks with you when you drink.",
+  "rule-nine": "Rhyme. Rhyme a word around the group.",
+  "rule-ten": "Categories. Pick a word, and everyone has to take it in turns saying a word related to that category. I.e \"football, referee\". The person who can't say a word, drinks.",
+  "rule-jack": "Make a rule. This player makes a rule that must be followed until the next Jack is picked.",
+  "rule-queen": "Question master. If you ask someone a question, and they answer, they must drink. If they reply \"F*** you\", you drink.",
+  "rule-king": "King card. You must pour a bit of your drink into the jug in the middle. If this is the fourth King, you must drink the jug.",
+  "rule-ace": "Waterfall. Everyone drinks until the person who picked the card stops drinking."
+}
