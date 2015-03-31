@@ -112,7 +112,9 @@
     self.window.rootViewController = self.viewController;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-  
+    [FBAppEvents activateApp];
+    [FBAppCall handleDidBecomeActive];
+    [FBSession openActiveSessionWithAllowLoginUI:NO];
     return YES;
 }
 
