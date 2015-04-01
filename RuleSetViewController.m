@@ -43,8 +43,7 @@
     [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                           [UIFont fontWithName:@"Avenir-Black" size:16.0f],UITextAttributeFont,
                                                           nil] forState:UIControlStateNormal];
-   
-    
+      
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <FacebookSDK/FacebookSDK.h>
 @interface SubmitViewController : UITableViewController
 - (IBAction)submit:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *titleText;

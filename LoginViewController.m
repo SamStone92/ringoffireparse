@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "ProfileTestViewController.h"
 
 @interface LoginViewController ()
 
@@ -61,7 +62,15 @@
                 NSLog(@"User with facebook logged in!");
             }
             NSLog(@"%@", user.username);
-            [self _presentUserDetailsViewControllerAnimated:YES];
+            
+            
+              [self _presentUserDetailsViewControllerAnimated:YES];
+                 
+                 
+           
+            
+
+            
         }
     }];
     

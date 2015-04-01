@@ -40,6 +40,7 @@
 		65DB067E1A3CE3FF003F763F /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65131B481A3C95D3003519BC /* ParseUI.framework */; };
 		65DB06811A3CE46C003F763F /* table.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DB06801A3CE46C003F763F /* table.m */; };
 		65DB06841A3E5A32003F763F /* SubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DB06831A3E5A32003F763F /* SubmitViewController.m */; };
+		65DD9B361ACB711200F5DD16 /* ProfileTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DD9B351ACB711200F5DD16 /* ProfileTestViewController.m */; };
 		65E9ACAA1AAFE95D00E72164 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9ACA91AAFE95D00E72164 /* ProfileViewController.m */; };
 		65FB6EE11A0ABC280071B70D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FB6EE01A0ABC280071B70D /* Main.storyboard */; };
 		65FB6EE31A0AC1110071B70D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65FB6EE21A0AC1110071B70D /* Images.xcassets */; };
@@ -175,6 +176,8 @@
 		65DB06801A3CE46C003F763F /* table.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = table.m; sourceTree = "<group>"; };
 		65DB06821A3E5A32003F763F /* SubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitViewController.h; sourceTree = "<group>"; };
 		65DB06831A3E5A32003F763F /* SubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitViewController.m; sourceTree = "<group>"; };
+		65DD9B341ACB711200F5DD16 /* ProfileTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTestViewController.h; sourceTree = "<group>"; };
+		65DD9B351ACB711200F5DD16 /* ProfileTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTestViewController.m; sourceTree = "<group>"; };
 		65E9ACA81AAFE95C00E72164 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		65E9ACA91AAFE95D00E72164 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		65FB6EE01A0ABC280071B70D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -395,6 +398,8 @@
 		77AF0067157FA442001EC3FB = {
 			isa = PBXGroup;
 			children = (
+				65DD9B341ACB711200F5DD16 /* ProfileTestViewController.h */,
+				65DD9B351ACB711200F5DD16 /* ProfileTestViewController.m */,
 				65E9ACA81AAFE95C00E72164 /* ProfileViewController.h */,
 				65E9ACA91AAFE95D00E72164 /* ProfileViewController.m */,
 				65838C881A4794DC00CAEC39 /* RuleSetViewController.h */,
@@ -666,6 +671,7 @@
 				658A4AD31A4F80A80025E09C /* EDStarRating.m in Sources */,
 				65838C8A1A4794DC00CAEC39 /* RuleSetViewController.m in Sources */,
 				65C8CC4B1A13C5C800289C48 /* rules.m in Sources */,
+				65DD9B361ACB711200F5DD16 /* ProfileTestViewController.m in Sources */,
 				65E9ACAA1AAFE95D00E72164 /* ProfileViewController.m in Sources */,
 				77AF0083157FA442001EC3FB /* main.m in Sources */,
 				77AF0087157FA442001EC3FB /* AppDelegate.m in Sources */,

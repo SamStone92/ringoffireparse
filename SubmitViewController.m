@@ -101,21 +101,28 @@
 - (IBAction)submit:(id)sender {
     
     PFObject *rules = [PFObject objectWithClassName:@"rules"];
-    rules[@"title"] = _titleText.text;
-    rules[@"two"] = _two.text;
-    rules[@"three"] = _three.text;
-    rules[@"four"] = _four.text;
-    rules[@"five"] = _five.text;
-    rules[@"six"] = _six.text;
-    rules[@"seven"] = _seven.text;
-    rules[@"eight"] = _eight.text;
-    rules[@"nine"] = _nine.text;
-    rules[@"ten"] = _ten.text;
-    rules[@"jack"] = _jack.text;
-    rules[@"queen"] = _queen.text;
-    rules[@"king"] = _king.text;
-    rules[@"ace"] = _ace.text;
-   
-    [rules saveInBackground];
-}
+    PFUser * user = [PFUser currentUser];
+    
+             rules[@"userId"] = user.username;
+             rules[@"title"] = _titleText.text;
+             rules[@"two"] = _two.text;
+             rules[@"three"] = _three.text;
+             rules[@"four"] = _four.text;
+             rules[@"five"] = _five.text;
+             rules[@"six"] = _six.text;
+             rules[@"seven"] = _seven.text;
+             rules[@"eight"] = _eight.text;
+             rules[@"nine"] = _nine.text;
+             rules[@"ten"] = _ten.text;
+             rules[@"jack"] = _jack.text;
+             rules[@"queen"] = _queen.text;
+             rules[@"king"] = _king.text;
+             rules[@"ace"] = _ace.text;
+             
+            
+
+
+          [rules saveInBackground];
+    
+    }
 @end

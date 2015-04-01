@@ -1,53 +1,65 @@
 //
-//  ProfileViewController.m
+//  ProfileTestViewController.m
 //  Ring of Fire
 //
-//  Created by Sam Stone on 11/03/2015.
+//  Created by Sam Stone on 01/04/2015.
 //  Copyright (c) 2015 Olivier Gutknecht. All rights reserved.
 //
 
-#import "ProfileViewController.h"
-#import <ParseUI/ParseUI.h>
-@interface ProfileViewController ()
-@property (strong, nonatomic) IBOutlet PFQueryTableViewController *tableView;
-@property (strong, nonatomic) PFObject *userRules;
+#import "ProfileTestViewController.h"
+#import <Parse/Parse.h>
+@interface ProfileTestViewController ()
 
 @end
-NSMutableArray * ruleTitle;
-@implementation ProfileViewController
+
+@implementation ProfileTestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
+        // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     
-    __block NSString *facebookId;
-    
-    PFUser * user = [PFUser currentUser];
     [FBRequestConnection startForMeWithCompletionHandler:
      ^(FBRequestConnection *connection, id result, NSError *error)
      {
-   
+         
          if (!error) {
-             facebookId = [result objectForKey:@"id"];
-             NSURL *profilePictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large", result[@"id"]]];
-             NSURLRequest *profilePictureURLRequest = [NSURLRequest requestWithURL:profilePictureURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f]; // Facebook profile picture cache policy: Expires in 2 weeks
-             [NSURLConnection connectionWithRequest:profilePictureURLRequest delegate:self];
+             _facebookId = [result objectForKey:@"id"];
              
-             NSLog(@"%@", profilePictureURL);
-             
-             NSData *imageData = [NSData dataWithContentsOfURL:profilePictureURL];
-             _profilePic.image = [UIImage imageWithData:imageData];
-             _userName.text = [result objectForKey:@"name"];
          }
-
+         
      }];
     [FBRequestConnection
      startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
          
-        
-     
-     
+         
+         
+         
      }];
-      // Do any additional setup after loading the view.
+    
+
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        
+        PFObject *object = [self.objects objectAtIndex:indexPath.row];
+        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+            [self loadObjects];
+        
+
+            
+        }];
+        
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,29 +67,35 @@ NSMutableArray * ruleTitle;
     // Dispose of any resources that can be recreated.
 }
 
-
 - (PFQuery *)queryForTable {
+    PFUser * user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"rules"];
-    
+    [query whereKey:@"userId" equalTo:user.username];
     // If no objects are loaded in memory, we look to the cache
     // first to fill the table and then subsequently do a query
     // against the network.
-    [query whereKey:@"userId" equalTo:@"Dan Stemkoski"];    
+    if ([self.objects count] == 0) {
+        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    }
+    
     [query orderByDescending:@"createdAt"];
     
     return query;
 }
 
-
-#pragma mark - Table view data source
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 2;
+- (id)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:style];
+    if (self) {
+        // This table displays items in the Todo class
+        
+        self.pullToRefreshEnabled = YES;
+        self.paginationEnabled = NO;
+        self.objectsPerPage = 25;
+    }
+    
+    
+    return self;
 }
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -100,16 +118,17 @@ NSMutableArray * ruleTitle;
         [cell.detailTextLabel setLineBreakMode:UILineBreakModeWordWrap];
         [cell.detailTextLabel setFont:[UIFont systemFontOfSize: 14.0]];
     }
-    cell.detailTextLabel.text = [object objectForKey:@"title"];
+    cell.textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:25.0f];
+    cell.textLabel.text = [object objectForKey:@"title"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Downloads: %@",[object objectForKey:@"downloads"]];
     
-
+    
     
     
     
     
     return cell;
 }
-
 
 /*
 #pragma mark - Navigation
